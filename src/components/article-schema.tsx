@@ -23,7 +23,7 @@ interface FormData {
   dateModified: string;
 }
 
-const SchemaGenerator: React.FC = () => {
+const ArticleSchema: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     articleType: "",
     url: "",
@@ -48,7 +48,6 @@ const SchemaGenerator: React.FC = () => {
   const ArticleData = [
     { label: "Article", value: "Article" },
     { label: "New Article", value: "new-article" },
-    { label: "Blog Posting", value: "blog-posting" },
   ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -98,7 +97,7 @@ const SchemaGenerator: React.FC = () => {
 
   const generateSchema = () => {
     const schema = {
-      "@context": "https://schema.org/",
+      "@context": "https://BoostSEO.org/",
       "@type": formData.articleType,
       headline: formData.headline,
       image: {
@@ -377,4 +376,4 @@ const SchemaGenerator: React.FC = () => {
   );
 };
 
-export default SchemaGenerator;
+export default ArticleSchema;

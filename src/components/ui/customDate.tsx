@@ -16,10 +16,12 @@ interface InputFieldProps {
   disabled?: boolean;
   inputCss?: any;
   minDate?: any;
+  name?: any;
 }
 
 const CustomDate = (props: InputFieldProps) => {
-  const { className, label, onChange, value, disabled, inputCss, minDate } = props;
+  const { className, label, onChange, value, disabled, inputCss, minDate } =
+    props;
 
   return (
     <div className="flex flex-col w-full">
@@ -40,7 +42,7 @@ const CustomDate = (props: InputFieldProps) => {
             sx={{
               ".MuiOutlinedInput-root": {
                 border: disabled ? "1px solid #DEDEDE" : "1px solid #D4D7DD",
-                borderRadius: "8px",
+                borderRadius: "5px",
                 width: "100%",
               },
               ".MuiFormControl-root": {
@@ -60,6 +62,9 @@ const CustomDate = (props: InputFieldProps) => {
               ".MuiOutlinedInput-notchedOutline": {
                 border: "none",
               },
+              ".css-1dune0f-MuiInputBase-input-MuiOutlinedInput-input ": {
+                padding: "12px 13px",
+              },
             }}
           >
             <DatePicker
@@ -74,12 +79,8 @@ const CustomDate = (props: InputFieldProps) => {
               minDate={minDate ? dayjs() : undefined}
               sx={{
                 ".MuiOutlinedInput-input ": {
-                  paddingY: "12px",
-                  borderRadius: disabled ? "8px" : "8px",
+                  borderRadius: disabled ? "5px" : "5px",
                   // backgroundColor: disabled ? '#EBEBEB' : 'transparent'
-                },
-                ".MuiButtonBase-root .MuiPickersDay-root.Mui-selected": {
-                  background: "red",
                 },
               }}
             />
