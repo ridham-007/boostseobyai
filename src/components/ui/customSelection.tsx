@@ -65,7 +65,7 @@ const CustomSelection = (props: CustomSelectionProps) => {
         const newOption = { value: inputValue, label: inputValue };
         props.onChange(newOption, props.name);
       }
-      event.preventDefault(); // Prevents the form from submitting
+      event.preventDefault(); 
     }
   };
 
