@@ -38,7 +38,7 @@ const SelectionType = () => {
       <div className="flex flex-col w-full md:max-w-[780px] self-center gap-1">
         <CustomSelection
           label="Which Schema would you like to create?"
-          className="w-full"
+          className="w-full text-[15px]"
           data={ArticleData}
           value={formData.schemaType}
           onChange={handleChange}
