@@ -1,5 +1,5 @@
 "use client";
-import CustomButton from "@/components/ui/custom-buttom";
+import CustomButton from "@/components/ui/custom-button";
 import '@/styles/globals.css'
 import { useRouter } from "next/navigation";
 

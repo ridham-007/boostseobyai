@@ -2,13 +2,14 @@
 import React, { useState } from "react";
 import CustomSelection from "./ui/customSelection";
 import CustomDate from "./ui/customDate";
-import InputField from "./ui/inputfield";
-import CustomButton from "./ui/custom-buttom";
+import CustomButton from "./ui/custom-button";
 import { LuCopy } from "react-icons/lu";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import { FaAngleDown } from "react-icons/fa6";
+import InputField from "./ui/inputField";
+
 interface FormData {
   articleType: string;
   url: string;
