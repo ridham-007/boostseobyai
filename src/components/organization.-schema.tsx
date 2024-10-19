@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import CustomSelection from "./ui/customSelection";
-import InputField from "./ui/inputfield";
-import CustomButton from "./ui/custom-buttom";
+import InputField from "./ui/inputField";
+import CustomButton from "./ui/custom-button";
 import { LuCopy } from "react-icons/lu";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -39,7 +39,6 @@ const OrganizationSchema: React.FC = () => {
     areas: "",
     language: "",
   });
-  console.log({ formData });
 
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [generatedSchema, setGeneratedSchema] = useState<string>("");

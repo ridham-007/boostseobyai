@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import CustomSelection from "./ui/customSelection";
 import CustomDate from "./ui/customDate";
-import InputField from "./ui/inputfield";
-import CustomButton from "./ui/custom-buttom";
+import InputField from "./ui/inputField";
+import CustomButton from "./ui/custom-button";
 import { LuCopy } from "react-icons/lu";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -67,32 +67,47 @@ const JobPostingSchema: React.FC = () => {
       [name]: value,
     });
   };
-
+  const isValidURL = (urlString: string) => {
+    const urlPattern = new RegExp(
+      "^(https?:\\/\\/)" +
+        "((([a-z0-9\\-]+)\\.)+([a-z]{2,})|" +
+        "localhost|" +
+        "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|" +
+        "\\[([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}\\])" +
+        "(\\:\\d+)?(\\/[-a-z0-9\\$_.+!*'(),;?&=]*)*$",
+      "i"
+    );
+    return !!urlPattern.test(urlString);
+  };
   const validateFields = () => {
     let formErrors: Partial<FormData> = {};
 
-    if (!formData.jobTitle) formErrors.jobTitle = "jobTitle is required";
+    if (!formData.jobTitle) formErrors.jobTitle = "job title is required";
     if (!formData.identifier) formErrors.identifier = "identifier is required";
     if (!formData.jobDescription)
-      formErrors.jobDescription = "jobDescription is required";
+      formErrors.jobDescription = "job description is required";
     if (!formData.company) formErrors.company = "company is required";
-    if (!formData.companyUrl) formErrors.companyUrl = "company Url is required";
+    if (!formData.companyUrl) {
+      formErrors.companyUrl = "company url is required";
+    } else if (!isValidURL(formData.companyUrl)) {
+      formErrors.companyUrl = "Invalid URL format";
+    }
     if (!formData.industry) formErrors.industry = "industry is required";
     if (!formData.employmentType)
-      formErrors.employmentType = "employmentType is required";
-    if (!formData.workHour) formErrors.workHour = "workHour is required";
+      formErrors.employmentType = "employment type is required";
+    if (!formData.workHour) formErrors.workHour = "work hour is required";
     if (!formData.datePosting)
-      formErrors.datePosting = "datePosting is required";
+      formErrors.datePosting = "date posting is required";
     if (!formData.validThrough)
-      formErrors.validThrough = "validThrough is required";
+      formErrors.validThrough = "valid through is required";
     if (!formData.salary) formErrors.salary = "salary is required";
     if (!formData.skills) formErrors.skills = "skills is required";
     if (!formData.qualifications)
       formErrors.qualifications = "qualifications is required";
     if (!formData.educationRequirements)
-      formErrors.educationRequirements = "educationRequirements is required";
+      formErrors.educationRequirements = "education requirements is required";
     if (!formData.experienceRequirements)
-      formErrors.experienceRequirements = "experienceRequirements is required";
+      formErrors.experienceRequirements = "experience requirements is required";
 
     setErrors(formErrors);
     return Object.keys(formErrors).length === 0;
@@ -106,33 +121,34 @@ const JobPostingSchema: React.FC = () => {
 
   const generateSchema = () => {
     const schema = {
-      "@context": "https://BoostSEO.org/",
-      jobTitle: formData.jobTitle,
-      identifier: formData.identifier,
-      jobDescription: formData.jobDescription,
+      "@context": "https://BoostSeo.org/",
+      "@type": "JobPosting",
+      title: formData.jobTitle,
+      description: formData.jobDescription,
+      identifier: {
+        "@type": "PropertyValue",
+        name: formData.identifier,
+      },
+      hiringOrganization: {
+        "@type": "Organization",
+        name: formData.company,
+        CompanyUrl: formData.companyUrl,
+      },
+      industry: formData.industry,
+      workHours: formData.workHour,
+      employmentType: formData.employmentType,
+      datePosted: formData.datePosting,
+      validThrough: formData.validThrough,
 
-      company: {
-        "@type": "company",
-        company: formData.company,
-        companyUrl: formData.companyUrl,
-      },
-      employmentType: {
-        "@type": formData.employmentType,
-        jobInformation: {
-          "@type": "ImageObject",
-          workHour: formData.workHour,
-          datePosting: formData.datePosting,
-          validThrough: formData.validThrough,
-        },
-      },
-      remoteJob: {
-        "@type": "remoteJob",
+      jobLocationType: "TELECOMMUTE",
+      salary: {
+        "@type": "MonetaryAmount",
         salary: formData.salary,
-        skills: formData.skills,
-        qualifications: formData.qualifications,
-        educationRequirements: formData.educationRequirements,
-        experienceRequirements: formData.experienceRequirements,
       },
+      skills: formData.skills,
+      qualifications: formData.qualifications,
+      educationRequirements: formData.educationRequirements,
+      experienceRequirements: formData.experienceRequirements,
     };
 
     setGeneratedSchema(JSON.stringify(schema, null, 2));
@@ -143,9 +159,9 @@ const JobPostingSchema: React.FC = () => {
       {/* Form Section */}
       <div className="flex flex-col w-full lg:w-1/2 gap-4">
         <InputField
-          label="Job Title"
+          label="Job title"
           name="jobTitle"
-          placeholder="Enter Job title"
+          placeholder="Enter job title"
           type="text"
           value={formData.jobTitle}
           onChange={handleInputChange}
@@ -159,7 +175,7 @@ const JobPostingSchema: React.FC = () => {
             <InputField
               label="Identifier"
               name="identifier"
-              placeholder="Enter Identifier"
+              placeholder="Enter identifier"
               type="text"
               value={formData.identifier}
               onChange={handleInputChange}
@@ -174,7 +190,7 @@ const JobPostingSchema: React.FC = () => {
             <InputField
               label="Job Description"
               name="jobDescription"
-              placeholder="Enter Job Description"
+              placeholder="Enter job description"
               type="text"
               value={formData.jobDescription}
               onChange={handleInputChange}
@@ -193,7 +209,7 @@ const JobPostingSchema: React.FC = () => {
             <InputField
               label="Company"
               name="company"
-              placeholder="Enter Company"
+              placeholder="Enter company"
               type="text"
               value={formData.company}
               onChange={handleInputChange}
@@ -207,7 +223,7 @@ const JobPostingSchema: React.FC = () => {
             <InputField
               label="Company URL"
               name="companyUrl"
-              placeholder="Enter Company Url"
+              placeholder="Enter company url"
               type="text"
               value={formData.companyUrl}
               onChange={handleInputChange}
@@ -221,7 +237,7 @@ const JobPostingSchema: React.FC = () => {
         <InputField
           label="Industry"
           name="industry"
-          placeholder="Enter Industry"
+          placeholder="Enter industry"
           type="text"
           value={formData.industry}
           onChange={handleInputChange}
@@ -377,7 +393,7 @@ const JobPostingSchema: React.FC = () => {
                   <InputField
                     label="Experience Requirements"
                     name="experienceRequirements"
-                    placeholder="Enter experience Requirements"
+                    placeholder="Enter experience requirements"
                     type="text"
                     value={formData.experienceRequirements}
                     onChange={handleInputChange}
