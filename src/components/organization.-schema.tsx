@@ -142,7 +142,18 @@ const OrganizationSchema: React.FC = () => {
       [name]: value,
     });
   };
-
+  const isValidURL = (urlString: string) => {
+    const urlPattern = new RegExp(
+      "^(https?:\\/\\/)" +
+        "((([a-z0-9\\-]+)\\.)+([a-z]{2,})|" +
+        "localhost|" +
+        "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|" +
+        "\\[([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}\\])" +
+        "(\\:\\d+)?(\\/[-a-z0-9\\$_.+!*'(),;?&=]*)*$",
+      "i"
+    );
+    return !!urlPattern.test(urlString);
+  };
   const validateFields = () => {
     let formErrors: Partial<FormData> = {};
 
@@ -151,10 +162,21 @@ const OrganizationSchema: React.FC = () => {
     if (!formData.alternateName)
       formErrors.alternateName = "alternateName is required";
     if (!formData.name) formErrors.name = "name is required";
-    if (!formData.url) formErrors.url = "url is required";
-    if (!formData.logoUrl) formErrors.logoUrl = "logoUrl is required";
-    if (!formData.socialProfile)
+    if (!formData.url) {
+      formErrors.url = "url is required";
+    } else if (!isValidURL(formData.url)) {
+      formErrors.url = "Invalid URL format";
+    }
+    if (!formData.logoUrl) {
+      formErrors.logoUrl = "logoUrl is required";
+    } else if (!isValidURL(formData.logoUrl)) {
+      formErrors.logoUrl = "Invalid URL format";
+    }
+    if (!formData.socialProfile) {
       formErrors.socialProfile = "socialProfile is required";
+    } else if (!isValidURL(formData.socialProfile)) {
+      formErrors.socialProfile = "Invalid URL format";
+    }
     if (!formData.contactType)
       formErrors.contactType = "contactType is required";
     if (!formData.phone) formErrors.phone = "phone is required";
@@ -168,31 +190,29 @@ const OrganizationSchema: React.FC = () => {
 
   const generateSchema = () => {
     const schema = {
-      "@context": "https://BoostSEO.org/",
-      "@type": "Organizer",
-      company: {
-        "@type": "organizationType",
-        company: formData.organizationType,
-      },
-      organizer: {
-        name: formData.name,
-        alternateName: formData.alternateName,
-        socialProfile: formData.socialProfile,
-        url: formData.url,
-        logoUrl: formData.logoUrl,
-        Contact: {
-          "@type": "Contact Details",
+      "@context": "https://BoostSeo.org",
+      "@type": "Organization",
+      organization: formData.organizationType,
+      name: formData.name,
+      url: formData.url,
+      logo: formData.logoUrl,
+      alternateName: formData.alternateName,
+      socialProfiles: formData.socialProfile,
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          telephone: formData.phone,
           contactType: formData.contactType,
-          phone: formData.phone,
           email: formData.email,
-          area: formData.areas,
-          language: formData.language,
+          areaServed: formData.areas,
+          availableLanguage: formData.language,
         },
-      },
+      ],
     };
 
     setGeneratedSchema(JSON.stringify(schema, null, 2));
   };
+
   const handleSubmit = () => {
     if (validateFields()) {
       generateSchema();
@@ -284,7 +304,7 @@ const OrganizationSchema: React.FC = () => {
         <InputField
           label="Social Profile"
           name="socialProfile"
-          placeholder="Enter social Profile"
+          placeholder="Enter social Profile(URL)"
           type="text"
           value={formData.socialProfile}
           onChange={handleInputChange}

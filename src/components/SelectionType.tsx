@@ -5,6 +5,12 @@ import ArticleSchema from "./article-schema";
 import EventSchema from "./event-schema";
 import JobPostingSchema from "./jobPosting-schema";
 import OrganizationSchema from "./organization.-schema";
+import FaqSchema from "./faq-schema";
+import HowToSchema from "./howto-schema";
+import WebsiteSchema from "./website-schema";
+import VideoSchema from "./video-schema";
+import PersonSchema from "./person-schema";
+import LocalBusinessSchema from "./localBussiness-schema";
 
 const SelectionType = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +28,11 @@ const SelectionType = () => {
       value: "organization",
     },
     { label: "FAQ-Page", value: "faq-page" },
+    { label: "How to", value: "howTo" },
+    { label: "Website- Site Link Searchbox", value: "website" },
+    { label: "Video ", value: "video" },
+    { label: "Person- Social Profile , Job Information ", value: "person" },
+    { label: "Local Business ", value: "local-Business" },
   ];
 
   const handleChange = (selectedItem: any) => {
@@ -51,6 +62,14 @@ const SelectionType = () => {
       {formData.schemaType.value === "event" && <EventSchema />}
       {formData.schemaType.value === "job-posting" && <JobPostingSchema />}
       {formData.schemaType.value === "organization" && <OrganizationSchema />}
+      {formData.schemaType.value === "faq-page" && <FaqSchema />}
+      {formData.schemaType.value === "howTo" && <HowToSchema />}
+      {formData.schemaType.value === "website" && <WebsiteSchema />}
+      {formData.schemaType.value === "video" && <VideoSchema />}
+      {formData.schemaType.value === "person" && <PersonSchema />}
+      {formData.schemaType.value === "local-Business" && (
+        <LocalBusinessSchema />
+      )}
     </>
   );
 };

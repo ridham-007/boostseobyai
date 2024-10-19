@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Select from "react-select";
 import TextField from "@mui/material/TextField";
@@ -65,7 +66,7 @@ const CustomSelection = (props: CustomSelectionProps) => {
         const newOption = { value: inputValue, label: inputValue };
         props.onChange(newOption, props.name);
       }
-      event.preventDefault(); 
+      event.preventDefault();
     }
   };
 
@@ -80,7 +81,7 @@ const CustomSelection = (props: CustomSelectionProps) => {
           <Select
             name={props.name}
             isMulti={props.isMulti}
-            value={props.value}
+            value={props.value || null}
             onChange={(selectedOption: any) => {
               props.onChange(selectedOption, props.name);
             }}
@@ -114,13 +115,17 @@ const CustomSelection = (props: CustomSelectionProps) => {
                 cursor: isDisabled ? "cursor-pointer" : "cursor-pointer",
               }),
             }}
-            className="w-full selection"
+            className="w-full selection text-[15px]"
             onKeyDown={props.onKeyDown ? handleKeyDown : undefined}
           />
         ) : (
           <Autocomplete
             id="grouped-demo"
-            value={{ value: props.value?.value, label: props.value?.label }}
+            value={
+              props.value
+                ? { value: props.value?.value, label: props.value?.label }
+                : null
+            }
             options={flattenedOptions.sort(
               (a, b) => -b.group.localeCompare(a.group)
             )}

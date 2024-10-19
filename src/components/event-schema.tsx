@@ -109,7 +109,18 @@ const EventSchema = () => {
       }));
     }
   };
-
+  const isValidURL = (urlString: string) => {
+    const urlPattern = new RegExp(
+      "^(https?:\\/\\/)" +
+        "((([a-z0-9\\-]+)\\.)+([a-z]{2,})|" +
+        "localhost|" +
+        "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|" +
+        "\\[([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}\\])" +
+        "(\\:\\d+)?(\\/[-a-z0-9\\$_.+!*'(),;?&=]*)*$",
+      "i"
+    );
+    return !!urlPattern.test(urlString);
+  };
   const validateFields = () => {
     let formErrors: Partial<FormData> = {};
 
@@ -118,7 +129,11 @@ const EventSchema = () => {
     if (!formData.eventName) formErrors.eventName = "Name is required.";
     if (!formData.description)
       formErrors.description = "Description is required.";
-    if (!formData.imageUrl) formErrors.imageUrl = "Image URL is required.";
+    if (!formData.imageUrl) {
+      formErrors.imageUrl = "imageUrl is required";
+    } else if (!isValidURL(formData.imageUrl)) {
+      formErrors.imageUrl = "Invalid URL format";
+    }
     if (!formData.startDate) formErrors.startDate = "Start date is required.";
     if (!formData.startTime) formErrors.startTime = "Start time is required.";
     if (!formData.endDate) formErrors.endDate = "End date is required.";
@@ -136,7 +151,6 @@ const EventSchema = () => {
     if (!formData.currencyCode)
       formErrors.currencyCode = "Currency code is required.";
 
-    // Validate ticket fields
     formData.ticket.forEach((ticket, index) => {
       if (!ticket.name) {
         formErrors.ticket = formErrors.ticket || [];
@@ -180,35 +194,30 @@ const EventSchema = () => {
   };
   const generateSchema = () => {
     const schema = {
-      "@context": "https://BoostSEO.org/",
+      "@context": "https://schema.org",
       "@type": "Event",
+      name: formData.eventName,
+      description: formData.description,
+      image: formData.imageUrl,
+      startDate: formData.startDate,
+      endDate: formData.endDate,
       performer: {
         "@type": formData.performerType,
         name: formData.performerName,
       },
-      venue: {
-        "@type": "venue",
-        name: formData.performerName,
-      },
-      eventName: formData.eventName,
-      description: formData.description,
-      startDate: formData.startDate,
-      startTime: formData.startTime,
-      endDate: formData.endDate,
-      endTime: formData.endTime,
-      ImageUrl: formData.imageUrl,
       location: {
+        "@type": "Place",
+        name: formData.venueName,
         address: {
-          "@type": "Address",
-          Street: formData.street,
-          City: formData.city,
-          PublisherZipCode: formData.zipCode,
-          CountryCode: formData.countryCode,
-          RegionCode: formData.regionCode,
-          CurrencyCode: formData.currencyCode,
+          "@type": "PostalAddress",
+          streetAddress: formData.street,
+          addressLocality: formData.city,
+          zipCode: formData.zipCode,
+          addressCountry: formData.countryCode,
+          addressRegion: formData.regionCode,
         },
       },
-      Ticket: {
+      offer: {
         "@type": "Ticket",
         Name: formData.ticket[0].name,
         price: formData.ticket[0].price,
@@ -249,7 +258,7 @@ const EventSchema = () => {
           <InputField
             label="Description"
             name="description"
-            placeholder="Enter Description"
+            placeholder="Enter description"
             type="text"
             value={formData.description}
             onChange={handleInputChange}
@@ -262,7 +271,7 @@ const EventSchema = () => {
           <InputField
             label="Image URL"
             name="imageUrl"
-            placeholder="Enter Image URL"
+            placeholder="Enter image url"
             type="text"
             value={formData.imageUrl}
             onChange={handleInputChange}
@@ -353,7 +362,7 @@ const EventSchema = () => {
               <InputField
                 label="Performer Name"
                 name="performerName"
-                placeholder="Enter Performer Name"
+                placeholder="Enter performer name"
                 type="text"
                 value={formData.performerName}
                 onChange={handleInputChange}
@@ -369,7 +378,7 @@ const EventSchema = () => {
               <InputField
                 label="Venue Name"
                 name="venueName"
-                placeholder="Enter Venue Name"
+                placeholder="Enter venue name"
                 type="text"
                 value={formData.venueName}
                 onChange={handleInputChange}
@@ -386,7 +395,7 @@ const EventSchema = () => {
               <InputField
                 label="Street "
                 name="street"
-                placeholder="Enter Street "
+                placeholder="Enter street "
                 type="text"
                 value={formData.street}
                 onChange={handleInputChange}
@@ -400,7 +409,7 @@ const EventSchema = () => {
               <InputField
                 label="City"
                 name="city"
-                placeholder="Enter City"
+                placeholder="Enter city"
                 type="text"
                 value={formData.city}
                 onChange={handleInputChange}
@@ -417,7 +426,7 @@ const EventSchema = () => {
               <InputField
                 label="Publisher Zip Code"
                 name="zipCode"
-                placeholder="Enter Zip Code"
+                placeholder="Enter zip code"
                 type="text"
                 value={formData.zipCode}
                 onChange={handleInputChange}
@@ -431,7 +440,7 @@ const EventSchema = () => {
               <InputField
                 label="Country Code"
                 name="countryCode"
-                placeholder="Enter Country Code"
+                placeholder="Enter country code"
                 type="text"
                 value={formData.countryCode}
                 onChange={handleInputChange}
@@ -447,7 +456,7 @@ const EventSchema = () => {
               <InputField
                 label=" Region Code"
                 name="regionCode"
-                placeholder="Enter Region Code"
+                placeholder="Enter region code"
                 type="text"
                 value={formData.regionCode}
                 onChange={handleInputChange}
@@ -461,7 +470,7 @@ const EventSchema = () => {
               <InputField
                 label="Currency Code"
                 name="currencyCode"
-                placeholder="Enter Currency Code"
+                placeholder="Enter currency code"
                 type="text"
                 value={formData.currencyCode}
                 onChange={handleInputChange}
@@ -494,7 +503,7 @@ const EventSchema = () => {
                       <InputField
                         label="Name"
                         name={`ticket[0].name`}
-                        placeholder="Enter Name"
+                        placeholder="Enter name"
                         type="text"
                         value={formData.ticket[0]?.name}
                         onChange={handleInputChange}
@@ -527,7 +536,7 @@ const EventSchema = () => {
                     <InputField
                       label="Url"
                       name={`ticket[0].url`}
-                      placeholder="Enter URL"
+                      placeholder="Enter url"
                       type="text"
                       value={formData.ticket[0]?.url}
                       onChange={handleInputChange}
@@ -544,7 +553,7 @@ const EventSchema = () => {
                       <InputField
                         label="Availability"
                         name={`ticket[0].availability`}
-                        placeholder="Enter Availability"
+                        placeholder="Enter availability"
                         type="text"
                         value={formData.ticket[0]?.availability}
                         onChange={handleInputChange}

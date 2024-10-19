@@ -23,7 +23,7 @@ const CountrySelector: React.FC<CountrySelectorProps> = ({
     []
   );
 
-  return <Select className = "h-[65px] text-[15px]" options={options} value={value} onChange={onChange} />;
+  return <Select className = "h-[65px] text-[15px]" options={options} value={value} onChange={onChange} placeholder="select area"/>;
 };
 
 export default CountrySelector;

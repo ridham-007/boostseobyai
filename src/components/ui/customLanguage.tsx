@@ -24,7 +24,7 @@ const LanguageDropdown: React.FC<LanguageSelectorProps> = ({
       options={options}
       value={value}
       onChange={onChange}
-      placeholder="Select a language"
+      placeholder="Select language"
       isClearable
       className="text-[14px] "
     />

@@ -5,7 +5,10 @@ import CustomDate from "./ui/customDate";
 import InputField from "./ui/inputfield";
 import CustomButton from "./ui/custom-buttom";
 import { LuCopy } from "react-icons/lu";
-
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import { FaAngleDown } from "react-icons/fa6";
 interface FormData {
   articleType: string;
   url: string;
@@ -57,25 +60,47 @@ const ArticleSchema: React.FC = () => {
       [name]: value,
     });
   };
-
+  const isValidURL = (urlString: string) => {
+    const urlPattern = new RegExp(
+      "^(https?:\\/\\/)" +
+        "((([a-z0-9\\-]+)\\.)+([a-z]{2,})|" +
+        "localhost|" +
+        "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|" +
+        "\\[([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}\\])" +
+        "(\\:\\d+)?(\\/[-a-z0-9\\$_.+!*'(),;?&=]*)*$",
+      "i"
+    );
+    return !!urlPattern.test(urlString);
+  };
   const validateFields = () => {
     let formErrors: Partial<FormData> = {};
 
     if (!formData.articleType)
       formErrors.articleType = "Article type is required";
-    if (!formData.url) formErrors.url = "URL is required";
+    if (!formData.url) {
+      formErrors.url = "url is required";
+    } else if (!isValidURL(formData.url)) {
+      formErrors.url = "Invalid URL format";
+    }
     if (!formData.headline) formErrors.headline = "Headline is required";
     if (!formData.description)
       formErrors.description = "Description is required";
-    if (!formData.imageUrl) formErrors.imageUrl = "Image URL is required";
+    if (!formData.imageUrl) {
+      formErrors.imageUrl = "imageUrl is required";
+    } else if (!isValidURL(formData.imageUrl)) {
+      formErrors.imageUrl = "Invalid URL format";
+    }
     if (!formData.imageWidth) formErrors.imageWidth = "Image width is required";
     if (!formData.imageHeight)
       formErrors.imageHeight = "Image height is required";
     if (!formData.authorName) formErrors.authorName = "Author name is required";
     if (!formData.publisherName)
       formErrors.publisherName = "Publisher name is required";
-    if (!formData.publisherLogoUrl)
-      formErrors.publisherLogoUrl = "Publisher logo URL is required";
+    if (!formData.publisherLogoUrl) {
+      formErrors.publisherLogoUrl = "publisherLogoUrl is required";
+    } else if (!isValidURL(formData.publisherLogoUrl)) {
+      formErrors.publisherLogoUrl = "Invalid URL format";
+    }
     if (!formData.publisherLogoWidth)
       formErrors.publisherLogoWidth = "Publisher logo width is required";
     if (!formData.publisherLogoHeight)
@@ -250,6 +275,7 @@ const ArticleSchema: React.FC = () => {
               <p className="text-[14px] text-red-500">{errors.authorName}</p>
             )}
           </div>
+
           <div className="flex flex-col w-full gap-1">
             <InputField
               label="Publisher Name"
@@ -265,82 +291,105 @@ const ArticleSchema: React.FC = () => {
             )}
           </div>
         </div>
+        <div className="flex flex-col gap-3">
+          <label className="font-medium text-[15px] leading-[24px] text-[#3E4654]">
+            Published
+          </label>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<FaAngleDown />}
+              aria-controls="panel1-content"
+              id="panel1-header"
+            >
+              Published Details
+            </AccordionSummary>
+            <AccordionDetails>
+              <div className="flex flex-col gap-5">
+                <InputField
+                  label="Publisher Logo URL"
+                  name="publisherLogoUrl"
+                  placeholder="Enter Publisher Logo URL"
+                  type="text"
+                  value={formData.publisherLogoUrl}
+                  onChange={handleInputChange}
+                  className="mt-2 text-[14px] sm:text-[16px]"
+                />
+                {errors.publisherLogoUrl && (
+                  <p className="text-[14px] text-red-500">
+                    {errors.publisherLogoUrl}
+                  </p>
+                )}
 
-        <InputField
-          label="Publisher Logo URL"
-          name="publisherLogoUrl"
-          placeholder="Enter Publisher Logo URL"
-          type="text"
-          value={formData.publisherLogoUrl}
-          onChange={handleInputChange}
-          className="mt-2 text-[14px] sm:text-[16px]"
-        />
-        {errors.publisherLogoUrl && (
-          <p className="text-[14px] text-red-500">{errors.publisherLogoUrl}</p>
-        )}
+                <div className="flex flex-col md:flex-row gap-5">
+                  <div className="flex flex-col w-full gap-1">
+                    <InputField
+                      label="Publisher Logo Width"
+                      name="publisherLogoWidth"
+                      placeholder="Enter Publisher Logo Width"
+                      type="text"
+                      value={formData.publisherLogoWidth}
+                      onChange={handleInputChange}
+                      className="mt-2 text-[14px] sm:text-[16px]"
+                    />
+                    {errors.publisherLogoWidth && (
+                      <p className="text-[14px] text-red-500">
+                        {errors.publisherLogoWidth}
+                      </p>
+                    )}
+                  </div>
+                  <div className="flex flex-col w-full gap-1">
+                    <InputField
+                      label="Publisher Logo Height"
+                      name="publisherLogoHeight"
+                      placeholder="Enter Publisher Logo Height"
+                      type="text"
+                      value={formData.publisherLogoHeight}
+                      onChange={handleInputChange}
+                      className="mt-2 text-[14px] sm:text-[16px]"
+                    />
+                    {errors.publisherLogoHeight && (
+                      <p className="text-[14px] text-red-500">
+                        {errors.publisherLogoHeight}
+                      </p>
+                    )}
+                  </div>
+                </div>
 
-        <div className="flex flex-col md:flex-row gap-5">
-          <div className="flex flex-col w-full gap-1">
-            <InputField
-              label="Publisher Logo Width"
-              name="publisherLogoWidth"
-              placeholder="Enter Publisher Logo Width"
-              type="text"
-              value={formData.publisherLogoWidth}
-              onChange={handleInputChange}
-              className="mt-2 text-[14px] sm:text-[16px]"
-            />
-            {errors.publisherLogoWidth && (
-              <p className="text-[14px] text-red-500">
-                {errors.publisherLogoWidth}
-              </p>
-            )}
-          </div>
-          <div className="flex flex-col w-full gap-1">
-            <InputField
-              label="Publisher Logo Height"
-              name="publisherLogoHeight"
-              placeholder="Enter Publisher Logo Height"
-              type="text"
-              value={formData.publisherLogoHeight}
-              onChange={handleInputChange}
-              className="mt-2 text-[14px] sm:text-[16px]"
-            />
-            {errors.publisherLogoHeight && (
-              <p className="text-[14px] text-red-500">
-                {errors.publisherLogoHeight}
-              </p>
-            )}
-          </div>
-        </div>
-
-        <div className="flex flex-col md:flex-row gap-5">
-          <div className="flex flex-col w-full gap-1">
-            <CustomDate
-              label="Date Published"
-              value={formData.datePublished}
-              onChange={(date: any) =>
-                setFormData({ ...formData, datePublished: date })
-              }
-              className="mt-2 text-[14px] sm:text-[16px]"
-            />
-            {errors.datePublished && (
-              <p className="text-[14px] text-red-500">{errors.datePublished}</p>
-            )}
-          </div>
-          <div className="flex flex-col w-full gap-1">
-            <CustomDate
-              label="Date Modified"
-              value={formData.dateModified}
-              onChange={(date: any) =>
-                setFormData({ ...formData, dateModified: date })
-              }
-              className="mt-2 text-[14px] sm:text-[16px]"
-            />
-            {errors.dateModified && (
-              <p className="text-[14px] text-red-500">{errors.dateModified}</p>
-            )}
-          </div>
+                <div className="flex flex-col md:flex-row gap-5">
+                  <div className="flex flex-col w-full gap-1">
+                    <CustomDate
+                      label="Date Published"
+                      value={formData.datePublished}
+                      onChange={(date: any) =>
+                        setFormData({ ...formData, datePublished: date })
+                      }
+                      className="mt-2 text-[14px] sm:text-[16px]"
+                    />
+                    {errors.datePublished && (
+                      <p className="text-[14px] text-red-500">
+                        {errors.datePublished}
+                      </p>
+                    )}
+                  </div>
+                  <div className="flex flex-col w-full gap-1">
+                    <CustomDate
+                      label="Date Modified"
+                      value={formData.dateModified}
+                      onChange={(date: any) =>
+                        setFormData({ ...formData, dateModified: date })
+                      }
+                      className="mt-2 text-[14px] sm:text-[16px]"
+                    />
+                    {errors.dateModified && (
+                      <p className="text-[14px] text-red-500">
+                        {errors.dateModified}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </AccordionDetails>
+          </Accordion>
         </div>
 
         <CustomButton
