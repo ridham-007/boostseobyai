@@ -12,7 +12,7 @@ const Tools = () => {
       title: "Find Keyword",
       description:
         "Find the most relevant keywords from any text within seconds with this free & powerful keyword finder.",
-      link: "/find-keyword",
+      link: "/keyword-generate",
     },
     {
       icon: <FiLink className="text-[28px]" />,
