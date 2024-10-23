@@ -118,33 +118,7 @@ export async function revalidateRoute(path: string): Promise<void> {
   revalidatePath(path, "layout");
 }
 
-export const getShortenUrl = async (url: string): Promise<any> => {
-  if (url) {
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_SITE_URL}/api/get-short-url`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ url }),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      return await response.json();
-    } catch (error) {
-      console.error("Error:", error);
-      return null;
-    }
-  }
-};
-
-export const getCustomShortenUrl = async ({ url, code }: any): Promise<any> => {
+export const SpeedTesting = async ({ url }: { url: string }): Promise<any> => {
   if (!url) {
     console.error("URL is required");
     return null;
@@ -152,57 +126,51 @@ export const getCustomShortenUrl = async ({ url, code }: any): Promise<any> => {
 
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SITE_URL}/api/get-short-url`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/site-insights`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          url,
-          code,
-        }),
+        body: JSON.stringify({ url }),
       }
     );
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    if (!response) {
+      throw new Error(`Error: ${response}`);
     }
 
     return await response.json();
   } catch (error) {
-    console.error("Error while generating the short URL:", error);
+    console.error("Error while testing site speed:", error);
     return null;
   }
 };
-
-export const RedirectUrl = async (code: string): Promise<any> => {
-  if (!code) return null;
+export const FetchMetaData = async ({ url }: { url: string }): Promise<any> => {
+  if (!url) {
+    console.error("URL is required");
+    return null;
+  }
 
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SITE_URL}/api/decode-short-url/${code}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/fetch-meta`,
       {
-        method: "GET",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({ url }),
       }
     );
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(
-        errorData.message || `HTTP error! status: ${response.status}`
-      );
-    }
-
-    if (response.redirected) {
-      return { ok: true, url: response.url, redirected: true };
+    if (!response) {
+      throw new Error(`Error: ${response}`);
     }
 
     return await response.json();
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error while testing site speed:", error);
+    return null;
   }
 };

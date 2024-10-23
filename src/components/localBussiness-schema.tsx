@@ -156,7 +156,6 @@ const LocalBusinessSchema: React.FC = () => {
     setGeneratedSchema(JSON.stringify(schema, null, 2));
   };
   const [selectedDays, setSelectedDays] = useState<number[]>([]);
-  console.log({ selectedDays });
   const daysOfWeek = [
     { id: 0, name: "Sunday" },
     { id: 1, name: "Monday" },

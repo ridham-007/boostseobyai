@@ -2,7 +2,8 @@
 import Link from "next/link";
 import React from "react";
 import { VscSymbolKeyword } from "react-icons/vsc";
-import { FiLink } from "react-icons/fi";
+import { IoMdSpeedometer } from "react-icons/io";
+
 import { PiRobotLight } from "react-icons/pi";
 
 const Tools = () => {
@@ -15,11 +16,11 @@ const Tools = () => {
       link: "/keyword-generate",
     },
     {
-      icon: <FiLink className="text-[28px]" />,
-      title: "InShorten",
+      icon: <IoMdSpeedometer className="text-[28px]" />,
+      title: "Speed Checker",
       description:
-        "With InShorten, it is possible to create an intuitive tool for creating personalized QR codes.",
-      link: "https://inshorten.com/",
+        " Website URL to test page speed and see how to make it faster.",
+      link: "/speed-checker",
     },
     {
       icon: <PiRobotLight className="text-[28px]" />,
