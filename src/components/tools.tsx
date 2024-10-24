@@ -33,7 +33,7 @@ const Tools = () => {
 
   return (
     <div className="flex flex-col w-full gap-10 sm:gap-12 lg:px-16">
-      <div className="text-[32px] sm:text-[42px] font-bold text-center">
+      <div className="text-[32px] sm:text-[42px] font-bold text-center ">
         Existing free tools
       </div>
 
@@ -43,7 +43,7 @@ const Tools = () => {
             key={index}
             className="flex flex-col gap-7 border rounded-md p-6 shadow-md transition-transform transform hover:scale-105"
           >
-            <div className="flex rotate-12 justify-center items-center h-[50px] w-[50px] text-[#7237b6] bg-white shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-md p-2">
+            <div className="flex rotate-12 justify-center items-center h-[50px] w-[50px] text-[#0B80E0] bg-white shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-md p-2">
               {tool.icon}
             </div>
             <div className="flex flex-col gap-1 h-[100px] w-full max-w-[500px]">
@@ -52,7 +52,7 @@ const Tools = () => {
             </div>
             <Link
               href={tool.link}
-              className="flex text-nowrap w-fit px-3 py-1 text-[14px] font-semibold rounded-full bg-[#f1e9fa] text-[#7237b6] hover:bg-[#e3d7e6]"
+              className="flex text-nowrap w-fit px-3 py-1 text-[14px] font-semibold rounded-full bg-[#e4f3ff] text-[#0B80E0] hover:bg-[#cfe7fa]"
             >
               Try this feature for free
             </Link>

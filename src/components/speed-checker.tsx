@@ -5,7 +5,7 @@ import CustomButton from "./ui/custom-button";
 import Spinner from "./loader";
 import { FetchMetaData, SpeedTesting } from "@/app/actions";
 import { HiChevronDown, HiChevronUp, HiLightBulb } from "react-icons/hi2";
-
+import Link from "next/link";
 interface Result {
   existingTitle?: string;
   newTitle?: string;
@@ -48,7 +48,10 @@ const SpeedChecker = () => {
 
       try {
         const response = await SpeedTesting({ url });
+        console.log({ response });
+
         const responseMetaData = await FetchMetaData({ url });
+        console.log({ responseMetaData });
 
         if (response) {
           if (response && responseMetaData) {
@@ -81,7 +84,7 @@ const SpeedChecker = () => {
   return (
     <>
       <div className="flex flex-col w-full gap-10  sm:gap-20 bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-md py-10 lg:py-14 px-6 lg:px-10">
-        <div className="flex flex-col gap-7 w-full">
+        <div className="flex flex-col gap-20 w-full">
           <div className="flex flex-col gap-1">
             <div className="text-[30px] sm:text-[40px] font-bold text-center">
               Page Speed Checker
@@ -114,8 +117,8 @@ const SpeedChecker = () => {
         {/* result */}
         {result && (
           <div className="flex flex-col gap-8 ">
-            <div className="flex flex-col  border rounded-md py-8 sm:p-10 gap-3">
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 md:gap-10 justify-center items-center p-3">
+            <div className="flex flex-col border rounded-md py-8 p-5 md:p-10 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-3 justify-center items-center px-5">
                 {Object.entries(result)
                   .filter(([key]) =>
                     ["performance", "seo", "cumulativeLayoutShift"].includes(
@@ -147,30 +150,31 @@ const SpeedChecker = () => {
                         : index % 2 === 1
                         ? "animate-fadeIn"
                         : "animate-fadeIn";
-
+                    const capitalizeFirstLetter = (str: any) =>
+                      str.charAt(0).toUpperCase() + str.slice(1);
                     return (
                       <div
                         key={index}
                         className={`flex  flex-col w-full  gap-2 justify-center items-center `}
                       >
                         <div
-                          className={`flex flex-col justify-center items-center h-[90px] w-[90px] sm:h-[100px]  sm:w-[100px] border-[4px] rounded-full ${animationClass} ${borderColor} ${backgroundColor} `}
+                          className={`flex flex-col justify-center items-center h-[90px] w-[90px] sm:h-[100px] sm:w-[100px] border-[4px] rounded-full ${animationClass} ${borderColor} ${backgroundColor} `}
                         >
-                          <div className="flex text-[22px] sm:text-[25px] font-medium p-4">
+                          <div className="flex text-[20px] sm:text-[25px] font-medium p-4">
                             {typeof value === "object"
                               ? JSON.stringify(value, null, 2)
                               : value}
                           </div>
                         </div>
-                        <div className="flex text-[14px] text-wrap md:text-[18px] font-medium">
-                          {key}
+                        <div className="flex text-[14px] md:text-[18px] font-medium">
+                          {capitalizeFirstLetter(key)}
                         </div>
                       </div>
                     );
                   })}
               </div>
               <div className="flex justify-center items-center mt-5 gap-3">
-                <div className="flex gap-5">
+                <div className="flex gap-3 sm:gap-5">
                   <div className="flex gap-2 justify-center items-center">
                     <div className="w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-b-[20px] border-b-green-600"></div>
                     <div className="text-[14px]">90-100</div>
@@ -200,6 +204,8 @@ const SpeedChecker = () => {
                       .map(([key, value], index) => {
                         const background =
                           gradientColors[index % gradientColors.length];
+                        const capitalizeFirstLetter = (str: any) =>
+                          str.charAt(0).toUpperCase() + str.slice(1);
 
                         return (
                           <div
@@ -220,7 +226,7 @@ const SpeedChecker = () => {
                                   : value}
                               </div>
                               <div className={`flex text-[18px] font-medium `}>
-                                {key}
+                                {capitalizeFirstLetter(key)}
                               </div>
                             </div>
                           </div>
@@ -232,13 +238,20 @@ const SpeedChecker = () => {
               <div className="border mt-5"></div>
               {/* Suggestion section */}
               <div className="flex flex-col w-full rounded-md bg-[#F8F9FA] mt-10 ">
-                <div className="flex gap-2 items-center py-6 px-8 ">
+                <div className="flex gap-2 items-center py-3 sm:py-6 px-4 sm:px-8 ">
                   <HiLightBulb className="text-[18px] text-[#727274]" />
-                  <div className="text-[18px] font-medium text-[#727274]">
+                  <div className="text-[16px] sm:text-[18px] font-medium text-[#727274]">
                     Suggestion
                   </div>
                 </div>
-                <div className="flex flex-col gap-5 p-8 border-t">
+                <Link
+                  href={url}
+                  target="_blank"
+                  className="flex gap-2 text-[15px] sm:text-[16px] items-center pb-3 sm:pb-6 px-4 sm:px-8 font-medium text-[#000] hover:text-blue-600 hover:underline cursor-pointer"
+                >
+                  {url}
+                </Link>
+                <div className="flex flex-col gap-5 p-4 sm:p-8 border-t">
                   {typeof result === "object" && result !== null && (
                     <>
                       {/* Existing Title */}
@@ -268,7 +281,7 @@ const SpeedChecker = () => {
                               New Title
                             </div>
                             <div className="text-[14px] sm:text-[15px] w-full">
-                              {result.newTitle || result.existingTitle}
+                              {result.newTitle}
                             </div>
                           </div>
                         </div>
@@ -302,8 +315,7 @@ const SpeedChecker = () => {
                               New Description
                             </div>
                             <div className="text-[14px] sm:text-[15px]w-full">
-                              {result.newDescription ||
-                                result.existingDescription}
+                              {result.newDescription}
                             </div>
                           </div>
                         </div>
