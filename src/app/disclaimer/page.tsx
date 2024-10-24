@@ -16,11 +16,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Disclaimer({
-  params: { lang },
-}: {
-  params: { lang: "en" | "es" };
-}) {
+export default async function Disclaimer() {
   return (
     <main className="flex w-full flex-col flex-wrap h-auto  bg-white px-5 md:px-10 my-10">
       <h1 className="flex w-full flex-col text-white text-xl lg:text-3xl font-semibold items-center px-8 py-4 md:py-6 lg:py-12 bg-gradient-to-br from-[#0B80E0] to-[#77b6e9] my-5">
@@ -28,25 +24,26 @@ export default async function Disclaimer({
       </h1>
 
       <p className="mt-10 font-bold text-gray-700">
-        Last updated: October 12, 2024
+        Last updated: October 24, 2024
       </p>
       <h2 className="text-[22px] font-semibold mt-3 text-[#0B80E1]">
         Interpretation and Definitions
       </h2>
       <h3 className="text-[18px] font-bold mt-2 ">Interpretation</h3>
+
       <p>
         The words of which the initial letter is capitalized have meanings
         defined under the following conditions. The following definitions shall
         have the same meaning regardless of whether they appear in singular or
         in plural.
       </p>
-      <h3 className="text-[18px] font-bold mt-2 ">Definitions</h3>
-      <p className="mt-1">For the purposes of this Disclaimer:</p>
+      <h4 className="text-[19px] font-bold mt-2 ">Definitions</h4>
+      <p>For the purposes of this Disclaimer:</p>
       <ul className="mt-5">
         <li>
           <strong>Company</strong> (referred to as either &quot;the
           Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in
-          this Disclaimer) refers to inshorten.
+          this Disclaimer) refers to Boostseo.
         </li>
         <li>
           <strong>Service</strong> refers to the Website.
@@ -57,21 +54,19 @@ export default async function Disclaimer({
           is accessing or using the Service, as applicable.
         </li>
         <li>
-          <strong>Website</strong> refers to inshorten, accessible from{" "}
+          <strong>Website</strong> refers to Boostseo, accessible from{" "}
           <a
-            href="https://inshorten.com"
+            href="https://Boostseo.com"
             rel="external nofollow noopener"
             target="_blank"
-            className="text-[#0B80E1] underline"
+            className="text-blue-600 underline"
           >
-            https://inshorten.com
+            https://Boostseo.com
           </a>
         </li>
       </ul>
-      <h1 className="text-[20px] font-semibold mt-6 text-[#0B80E1]">
-        Disclaimer
-      </h1>
-      <p className="mt-1">
+      <h2 className="text-[20px] font-bold mt-5 ">Disclaimer</h2>
+      <p>
         The information contained on the Service is for general information
         purposes only.
       </p>
@@ -89,10 +84,10 @@ export default async function Disclaimer({
         any time without prior notice. This Disclaimer has been created with the
         help of the{" "}
         <a
-          href="https://www.termsfeed.com/disclaimer-generator/"
+          href="https://www.freeprivacypolicy.com/free-disclaimer-generator/"
           target="_blank"
         >
-          Disclaimer Generator
+          Free Disclaimer Generator
         </a>
         .
       </p>
@@ -100,10 +95,8 @@ export default async function Disclaimer({
         The Company does not warrant that the Service is free of viruses or
         other harmful components.
       </p>
-      <h2 className="text-[20px] font-semibold mt-6 text-[#0B80E1]">
-        External Links Disclaimer
-      </h2>
-      <p className="mt-1">
+      <h2 className="text-[20px] font-bold mt-5 ">External Links Disclaimer</h2>
+      <p>
         The Service may contain links to external websites that are not provided
         or maintained by or in any way affiliated with the Company.
       </p>
@@ -112,7 +105,7 @@ export default async function Disclaimer({
         timeliness, or completeness of any information on these external
         websites.
       </p>
-      <h2 className="text-[20px] font-semibold mt-6 text-[#0B80E1]">
+      <h2 className="text-[20px] font-bold mt-5 ">
         Errors and Omissions Disclaimer
       </h2>
       <p>
@@ -127,10 +120,8 @@ export default async function Disclaimer({
         The Company is not responsible for any errors or omissions, or for the
         results obtained from the use of this information.
       </p>
-      <h2 className="text-[20px] font-semibold mt-6 text-[#0B80E1]">
-        Fair Use Disclaimer
-      </h2>
-      <p className="mt-1">
+      <h2 className="text-[20px] font-bold mt-5 ">Fair Use Disclaimer</h2>
+      <p>
         The Company may use copyrighted material which has not always been
         specifically authorized by the copyright owner. The Company is making
         such material available for criticism, comment, news reporting,
@@ -146,10 +137,10 @@ export default async function Disclaimer({
         purposes that go beyond fair use, You must obtain permission from the
         copyright owner.
       </p>
-      <h2 className="text-[20px] font-semibold mt-6 text-[#0B80E1]">
+      <h2 className="text-[20px] font-bold mt-5 ">
         Views Expressed Disclaimer
       </h2>
-      <p className="mt-1">
+      <p>
         The Service may contain views and opinions which are those of the
         authors and do not necessarily reflect the official policy or position
         of any other author, agency, organization, employer or company,
@@ -163,10 +154,10 @@ export default async function Disclaimer({
         comment published by users and reserves the right to delete any comment
         for any reason whatsoever.
       </p>
-      <h2 className="text-[20px] font-semibold mt-6 text-[#0B80E1]">
+      <h2 className="text-[20px] font-bold mt-5 ">
         No Responsibility Disclaimer
       </h2>
-      <p className="mt-1">
+      <p>
         The information on the Service is provided with the understanding that
         the Company is not herein engaged in rendering legal, accounting, tax,
         or other professional advice and services. As such, it should not be
@@ -179,10 +170,10 @@ export default async function Disclaimer({
         arising out of or in connection with your access or use or inability to
         access or use the Service.
       </p>
-      <h2 className="text-[20px] font-semibold mt-6 text-[#0B80E1]">
+      <h2 className="text-[20px] font-bold mt-5 ">
         &quot;Use at Your Own Risk&quot; Disclaimer
       </h2>
-      <p className="mt-1">
+      <p>
         All information in the Service is provided &quot;as is&quot;, with no
         guarantee of completeness, accuracy, timeliness or of the results
         obtained from the use of this information, and without warranty of any
@@ -195,14 +186,12 @@ export default async function Disclaimer({
         or for any consequential, special or similar damages, even if advised of
         the possibility of such damages.
       </p>
-      <h2 className="text-[20px] font-semibold mt-6 text-[#0B80E1]">
-        Contact Us
-      </h2>
-      <p className="mt-1">
+      <h2 className="text-[20px] font-bold mt-5 ">Contact Us</h2>
+      <p>
         If you have any questions about this Disclaimer, You can contact Us:
       </p>
       <ul>
-        <li className="text-[#0B80E1]">By email:contact@inshorten.com</li>
+        <li className="text-blue-600">By email: contact@boostseo.com</li>
       </ul>
     </main>
   );
