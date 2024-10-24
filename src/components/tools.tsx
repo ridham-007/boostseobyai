@@ -24,20 +24,27 @@ const Tools = () => {
     },
     {
       icon: <PiRobotLight className="text-[28px]" />,
-      title: "AIHumanInsights",
+      title: "MetaData Generate",
       description:
-        "AiHumanInsights the most Advanced and Reliable Chat GPT, GPT4 & AI Content Detector",
-      link: "https://aihumaninsights.com/",
+        "Enter a website URL and Generate New meta title and meta description.",
+      link: "/meta-data-generate",
+    },
+    {
+      icon: <PiRobotLight className="text-[28px]" />,
+      title: "MetaTag Generate",
+      description:
+        "The meta tag generator will create description, keyword and other important meta tags for you with provided content..",
+      link: "/meta-tag-generate",
     },
   ];
 
   return (
-    <div className="flex flex-col w-full gap-10 sm:gap-12 lg:px-16">
+    <div className="flex flex-col w-full gap-10 sm:gap-12 ">
       <div className="text-[32px] sm:text-[42px] font-bold text-center ">
         Existing free tools
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:flex-row md:gap-6  lg:gap-10 md:items-start">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:flex-row md:gap-6  lg:gap-8 md:items-start">
         {toolsData.map((tool, index) => (
           <div
             key={index}

@@ -9,7 +9,7 @@ const Information = () => {
           Tools Calling Schema generator
         </div>
         <div className="text-[14px] sm:text-[16px] font-medium text-center ">
-          Easily generate the perfect structured data (JSON schema markups) for
+          Easily generate the perfect data structured(JSON schema markups) for
           any web page in minutes. And, increase the chances of getting your
           website featured in the rich results for relevant Google searches.
         </div>

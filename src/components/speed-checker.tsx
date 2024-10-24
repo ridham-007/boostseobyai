@@ -4,22 +4,13 @@ import InputField from "./ui/inputField";
 import CustomButton from "./ui/custom-button";
 import Spinner from "./loader";
 import { FetchMetaData, SpeedTesting } from "@/app/actions";
-import { HiChevronDown, HiChevronUp, HiLightBulb } from "react-icons/hi2";
-import Link from "next/link";
-interface Result {
-  existingTitle?: string;
-  newTitle?: string;
-  existingDescription?: string;
-  newDescription?: string;
-}
 
 const SpeedChecker = () => {
   const [url, setUrl] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<Result | string>("");
-  const [isNewTitleOpen, setNewTitleOpen] = useState(false);
-  const [isNewDescriptionOpen, setNewDescriptionOpen] = useState(false);
+  const [result, setResult] = useState("");
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -48,14 +39,10 @@ const SpeedChecker = () => {
 
       try {
         const response = await SpeedTesting({ url });
-        console.log({ response });
-
-        const responseMetaData = await FetchMetaData({ url });
-        console.log({ responseMetaData });
 
         if (response) {
-          if (response && responseMetaData) {
-            setResult({ ...response, ...responseMetaData });
+          if (response) {
+            setResult(response);
           } else {
             setError("Failed to analyze the website.");
           }
@@ -233,95 +220,6 @@ const SpeedChecker = () => {
                         );
                       })}
                   </div>
-                </div>
-              </div>
-              <div className="border mt-5"></div>
-              {/* Suggestion section */}
-              <div className="flex flex-col w-full rounded-md bg-[#F8F9FA] mt-10 ">
-                <div className="flex gap-2 items-center py-3 sm:py-6 px-4 sm:px-8 ">
-                  <HiLightBulb className="text-[18px] text-[#727274]" />
-                  <div className="text-[16px] sm:text-[18px] font-medium text-[#727274]">
-                    Suggestion
-                  </div>
-                </div>
-                <Link
-                  href={url}
-                  target="_blank"
-                  className="flex gap-2 text-[15px] sm:text-[16px] items-center pb-3 sm:pb-6 px-4 sm:px-8 font-medium text-[#000] hover:text-blue-600 hover:underline cursor-pointer"
-                >
-                  {url}
-                </Link>
-                <div className="flex flex-col gap-5 p-4 sm:p-8 border-t">
-                  {typeof result === "object" && result !== null && (
-                    <>
-                      {/* Existing Title */}
-                      <div
-                        className="flex flex-col sm:flex-row w-full gap-2 sm:gap-5 justify-between cursor-pointer"
-                        onClick={() => setNewTitleOpen(!isNewTitleOpen)}
-                      >
-                        <div className="text-[15px] sm:text-[16px] font-medium w-full max-w-[170px]">
-                          Title
-                        </div>
-                        <div className="text-[14px] sm:text-[15px] w-full ">
-                          {result.existingTitle || "N/A"}
-                        </div>
-                        <div className="flex  justify-end text-[18px]">
-                          {isNewTitleOpen ? (
-                            <HiChevronUp className="!text-[18px]" />
-                          ) : (
-                            <HiChevronDown className="!text-[18px]" />
-                          )}
-                        </div>
-                      </div>
-
-                      {isNewTitleOpen && (
-                        <div className="flex mt-2 p-4 border-l-2 bg-white rounded-md border-gray-300 ">
-                          <div className="flex flex-col sm:flex-row w-full gap-3 sm:gap-5">
-                            <div className="text-[15px] sm:text-[16px] font-medium w-full max-w-[170px]">
-                              New Title
-                            </div>
-                            <div className="text-[14px] sm:text-[15px] w-full">
-                              {result.newTitle}
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Existing Description */}
-                      <div
-                        className="flex  flex-col sm:flex-row w-full gap-2  sm:gap-5 cursor-pointer"
-                        onClick={() =>
-                          setNewDescriptionOpen(!isNewDescriptionOpen)
-                        }
-                      >
-                        <div className="text-[15px] sm:text-[16px] font-medium w-full max-w-[170px]">
-                          Description
-                        </div>
-                        <div className="text-[14px] sm:text-[15px] w-full ">
-                          {result.existingDescription || "N/A"}
-                        </div>
-                        <div className="flex justify-end text-[18px]">
-                          {isNewDescriptionOpen ? (
-                            <HiChevronUp className="text-[18px]" />
-                          ) : (
-                            <HiChevronDown className="text-[18px]" />
-                          )}
-                        </div>
-                      </div>
-                      {isNewDescriptionOpen && (
-                        <div className="flex flex-col mt-2 p-4 border-l-2 border-gray-300 bg-white  rounded-md">
-                          <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 ">
-                            <div className="font-medium w-full max-w-[170px] text-[15px] sm:text-[16px]">
-                              New Description
-                            </div>
-                            <div className="text-[14px] sm:text-[15px]w-full">
-                              {result.newDescription}
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </>
-                  )}
                 </div>
               </div>
             </div>
