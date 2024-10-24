@@ -9,9 +9,8 @@ export interface NavbarProps {}
 
 export default function Navbar(props: NavbarProps) {
   const navData = [
-    { title: "Blog", href: "/blog" },
-    { title: "Disclaimer", href: "/disclaimer" },
-    { title: "About Us", href: "/about-us" },
+    { title: "Keyword Generate", href: "/keyword-generate" },
+    { title: "Speed Checker", href: "/speed-checker" },
   ];
   const [open, setOpen] = useState(false);
   const hamburgerRef = useRef<HTMLDivElement>(null);

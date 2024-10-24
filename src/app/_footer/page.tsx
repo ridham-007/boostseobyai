@@ -9,7 +9,6 @@ import { FaRegCopyright, FaXTwitter, FaYoutube } from "react-icons/fa6";
 export default function Footer() {
   const router = useRouter();
   const navData = [
-    { title: "Blog", href: "/blog" },
     { title: "Disclaimer", href: "/disclaimer" },
     {
       title: "Privacy Policy",
@@ -43,9 +42,9 @@ export default function Footer() {
     },
   ];
   const features = [
-    { label: "Static URL", url: "static-url" },
-    { label: "Dynamic URL", url: "dynamic-url" },
-    { label: "QR Code", url: "qr-code" },
+    { label: "Schema Generator", url: "/" },
+    { label: "Keyword Generator", url: "/keyword-generate" },
+    { label: "Speed Checker", url: "speed-checker" },
   ];
   return (
     <footer
@@ -60,16 +59,16 @@ export default function Footer() {
               About Us
             </div>
             <div className="text-[14px] sm:text-[16px]">
-              We provide a simple and efficient tool to shorten link, Long URLs
-              convert to short link.Our platform makes it easier to share, and
-              manage urls more...
+              We provide a simple and efficient tool to Schema Generator ,
+              Keyword Generator and Speed Checker. our platform makes it easier
+              Seo Tools...
             </div>
           </div>
           <div className="flex flex-col gap-1 md:gap-2 items-start">
             <div className="text-[18px] font-semibold self-start">
               Popular Features
             </div>
-            <div className="flex flex-row md:flex-col gap-5 sm:gap-10 md:gap-0 text-[15px] ml-1 text-nowrap ">
+            <div className="flex flex-wrap flex-col sm:gap-10 md:gap-0 text-[15px] ml-1 text-nowrap ">
               {features.map((feature, index) => (
                 <div
                   key={index}
@@ -109,7 +108,7 @@ export default function Footer() {
               Contact
             </div>
             <div className="text-[14px] md:text-[16px]">
-              e-mail: contact@inshorten.com
+              e-mail: contact@boostseo.com
             </div>
           </div>
         </div>
@@ -136,7 +135,7 @@ export default function Footer() {
             <Logo />
           </div>
           <div className="flex w-full justify-center text-[12px] md:text-[14px] text-nowrap">
-            <FaRegCopyright className="mr-2 text-[16px]" /> 2024 by InShorten.
+            <FaRegCopyright className="mr-2 text-[16px]" /> 2024 by BoostSEO.
             All Right Reserved.
           </div>
         </div>
