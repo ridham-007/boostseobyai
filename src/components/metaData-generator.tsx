@@ -51,7 +51,6 @@ const MetadataGenerator = () => {
 
       try {
         const response = await FetchMetaData({ url });
-        console.log({ response });
 
         if (response) {
           setResult(response);
