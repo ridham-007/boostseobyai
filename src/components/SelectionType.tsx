@@ -14,7 +14,7 @@ import LocalBusinessSchema from "./localBussiness-schema";
 
 const SelectionType = () => {
   const [formData, setFormData] = useState({
-    schemaType: { label: "Article", value: "article" },
+    schemaType: { label: "", value: "" },
   });
 
   const [error, setError] = useState("");

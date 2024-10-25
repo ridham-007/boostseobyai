@@ -9,9 +9,13 @@ export interface NavbarProps {}
 
 export default function Navbar(props: NavbarProps) {
   const navData = [
-    { title: "Keyword Generate", href: "/keyword-generate" },
     { title: "Speed Checker", href: "/speed-checker" },
+    { title: "Schema Generator", href: "/" },
+    { title: "Keyword Generator", href: "/keyword-generate" },
+    { title: "MetaData Generator", href: "meta-data-generate" },
+    { title: "MetaTag Generator", href: "/meta-tag-generate" },
   ];
+
   const [open, setOpen] = useState(false);
   const hamburgerRef = useRef<HTMLDivElement>(null);
   const handleOpen = () => setOpen(!open);

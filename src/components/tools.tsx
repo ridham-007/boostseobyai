@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { VscSymbolKeyword } from "react-icons/vsc";
 import { IoMdSpeedometer } from "react-icons/io";
-
+import { HiDatabase } from "react-icons/hi";
 import { PiRobotLight } from "react-icons/pi";
 
 const Tools = () => {
@@ -12,28 +12,28 @@ const Tools = () => {
       icon: <VscSymbolKeyword className="text-[28px]" />,
       title: "Find Keyword",
       description:
-        "Find the most relevant keywords from any text within seconds with this free & powerful keyword finder.",
+        "Discover high-impact keywords that resonate with your target audience and boost your content strategy.",
       link: "/keyword-generate",
     },
     {
       icon: <IoMdSpeedometer className="text-[28px]" />,
       title: "Speed Checker",
       description:
-        " Website URL to test page speed and see how to make it faster.",
+        "Analyze your website’s performance with our speed checker, ensuring optimal load times for a better user experience.",
       link: "/speed-checker",
     },
     {
-      icon: <PiRobotLight className="text-[28px]" />,
+      icon: <HiDatabase className="text-[28px]" />,
       title: "MetaData Generate",
       description:
-        "Enter a website URL and Generate New meta title and meta description.",
+        "Create compelling metadata that attracts clicks and improves your site’s visibility on search engines.",
       link: "/meta-data-generate",
     },
     {
       icon: <PiRobotLight className="text-[28px]" />,
       title: "MetaTag Generate",
       description:
-        "The meta tag generator will create description, keyword and other important meta tags for you with provided content..",
+        "Effortlessly generate relevant meta tags to enhance your content’s searchability.",
       link: "/meta-tag-generate",
     },
   ];

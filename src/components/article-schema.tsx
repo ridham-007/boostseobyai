@@ -165,10 +165,14 @@ const ArticleSchema: React.FC = () => {
             <CustomSelection
               className="w-full"
               data={ArticleData}
-              value={formData.articleType}
-              onChange={(value: string) =>
-                setFormData({ ...formData, articleType: value })
+              value={
+                ArticleData.find(
+                  (option) => option.value === formData.articleType
+                ) || null
               }
+              onChange={(value: { label: string; value: string }) => {
+                setFormData({ ...formData, articleType: value.value });
+              }}
               AutocompleteData={[]}
             />
             {errors.articleType && (

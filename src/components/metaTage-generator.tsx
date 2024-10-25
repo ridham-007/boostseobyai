@@ -155,7 +155,7 @@ const MetaTagGenerator = () => {
         <div className="flex flex-col gap-20 w-full">
           <div className="flex flex-col gap-1">
             <div className="text-[30px] sm:text-[40px] font-bold text-center">
-              Meta tag Generate
+              Meta Tag Generate
             </div>
 
             <div className="w-full max-w-[1000px] self-center text-[13px] sm:text-[15px] text-gray-400 text-center">
@@ -227,11 +227,14 @@ const MetaTagGenerator = () => {
                   <CustomSelection
                     className="w-full"
                     data={data}
-                    value={formData.index}
                     name="index"
-                    onChange={(value: string) =>
-                      setFormData({ ...formData, index: value })
+                    value={
+                      data.find((option) => option.value === formData.index) ||
+                      null
                     }
+                    onChange={(value: { label: string; value: string }) => {
+                      setFormData({ ...formData, index: value.value });
+                    }}
                     AutocompleteData={[]}
                   />
                 </div>
@@ -249,11 +252,14 @@ const MetaTagGenerator = () => {
                   <CustomSelection
                     className="w-full"
                     data={data}
-                    value={formData.follow}
                     name="follow"
-                    onChange={(value: string) =>
-                      setFormData({ ...formData, follow: value })
+                    value={
+                      data.find((option) => option.value === formData.follow) ||
+                      null
                     }
+                    onChange={(value: { label: string; value: string }) => {
+                      setFormData({ ...formData, follow: value.value });
+                    }}
                     AutocompleteData={[]}
                   />
                 </div>

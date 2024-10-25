@@ -42,9 +42,11 @@ export default function Footer() {
     },
   ];
   const features = [
+    { label: "Speed Checker", url: "/speed-checker" },
     { label: "Schema Generator", url: "/" },
     { label: "Keyword Generator", url: "/keyword-generate" },
-    { label: "Speed Checker", url: "speed-checker" },
+    { label: "MetaData Generator", url: "/meta-data-generate" },
+    { label: "MetaTag Generator", url: "/meta-tag-generate" },
   ];
   return (
     <footer
@@ -59,16 +61,15 @@ export default function Footer() {
               About Us
             </div>
             <div className="text-[14px] sm:text-[16px]">
-              We provide a simple and efficient tool to Schema Generator ,
-              Keyword Generator and Speed Checker. our platform makes it easier
-              Seo Tools...
+              At BoostSEO, we offer a suite of innovative services designed to
+              cater to all your SEO tools needs.
             </div>
           </div>
           <div className="flex flex-col gap-1 md:gap-2 items-start">
             <div className="text-[18px] font-semibold self-start">
               Popular Features
             </div>
-            <div className="flex flex-wrap flex-col sm:gap-10 md:gap-0 text-[15px] ml-1 text-nowrap ">
+            <div className="flex flex-wrap flex-col sm:gap-10 md:gap-[2px] text-[15px] ml-1 text-nowrap ">
               {features.map((feature, index) => (
                 <div
                   key={index}
@@ -84,7 +85,7 @@ export default function Footer() {
             <div className="text-[18px] sm:text-[20px] font-semibold self-start">
               Quick Link
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-1 text-[15px] sm:text-[16px] gap-2 sm:gap-2 md:gap-0 lg:gap-0  ">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-1 text-[15px] sm:text-[16px] gap-2 sm:gap-2 md:gap-[2px] lg:gap-0  ">
               {navData.slice(0, 4).map((link: any, index) => (
                 <Link
                   href={link.href}

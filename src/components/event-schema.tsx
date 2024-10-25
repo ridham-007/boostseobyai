@@ -347,12 +347,17 @@ const EventSchema = () => {
             <CustomSelection
               className="w-full"
               data={EventData}
-              value={formData.performerType}
-              onChange={(value: string) =>
-                setFormData({ ...formData, performerType: value })
+              value={
+                EventData.find(
+                  (option) => option.value === formData.performerType
+                ) || null
               }
+              onChange={(value: { label: string; value: string }) => {
+                setFormData({ ...formData, performerType: value.value });
+              }}
               AutocompleteData={[]}
             />
+
             {errors.performerType && (
               <p className="text-[14px] text-red-500">{errors.performerType}</p>
             )}

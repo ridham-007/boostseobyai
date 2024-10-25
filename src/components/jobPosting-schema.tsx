@@ -254,10 +254,14 @@ const JobPostingSchema: React.FC = () => {
             <CustomSelection
               className="w-full"
               data={employmentType}
-              value={formData.employmentType}
-              onChange={(value: string) =>
-                setFormData({ ...formData, employmentType: value })
+              value={
+                employmentType.find(
+                  (option) => option.value === formData.employmentType
+                ) || null
               }
+              onChange={(value: { label: string; value: string }) => {
+                setFormData({ ...formData, employmentType: value.value });
+              }}
               AutocompleteData={[]}
             />
             {errors.employmentType && (

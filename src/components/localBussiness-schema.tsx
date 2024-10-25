@@ -249,10 +249,14 @@ const LocalBusinessSchema: React.FC = () => {
           <CustomSelection
             className="w-full"
             data={BusinessData}
-            value={formData.localBusinessType}
-            onChange={(value: string) =>
-              setFormData({ ...formData, localBusinessType: value })
+            value={
+              BusinessData.find(
+                (option) => option.value === formData.localBusinessType
+              ) || null
             }
+            onChange={(value: { label: string; value: string }) => {
+              setFormData({ ...formData, localBusinessType: value.value });
+            }}
             AutocompleteData={[]}
           />
           {errors.localBusinessType && (

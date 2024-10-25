@@ -228,10 +228,14 @@ const OrganizationSchema: React.FC = () => {
           <CustomSelection
             className="w-full text-[14px]"
             data={organizationType}
-            value={formData.organizationType}
-            onChange={(value: string) =>
-              setFormData({ ...formData, organizationType: value })
+            value={
+              organizationType.find(
+                (option) => option.value === formData.organizationType
+              ) || null
             }
+            onChange={(value: { label: string; value: string }) => {
+              setFormData({ ...formData, organizationType: value.value });
+            }}
             AutocompleteData={[]}
           />
           {errors.organizationType && (
@@ -335,10 +339,14 @@ const OrganizationSchema: React.FC = () => {
                     <CustomSelection
                       className="w-full text-[14px]"
                       data={contactType}
-                      value={formData.contactType}
-                      onChange={(value: string) =>
-                        setFormData({ ...formData, contactType: value })
+                      value={
+                        contactType.find(
+                          (option) => option.value === formData.contactType
+                        ) || null
                       }
+                      onChange={(value: { label: string; value: string }) => {
+                        setFormData({ ...formData, contactType: value.value });
+                      }}
                       AutocompleteData={[]}
                     />
                     {errors.contactType && (
