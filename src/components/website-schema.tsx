@@ -62,7 +62,7 @@ const WebsiteSchema: React.FC = () => {
 
   const generateSchema = () => {
     const schema = {
-      "@context": "https://BoostSeo.org/",
+      "@context": "https://BoostSeobyAI.org/",
       "@type": "WebSite",
       name: formData.websiteName,
       url: formData.url,

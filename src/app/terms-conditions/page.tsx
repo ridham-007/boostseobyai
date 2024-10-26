@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms and Conditions - InShorten",
+  title: "Terms and Conditions - BoostSeobyAI",
   description:
-    "Review the Terms and Conditions for using InShorten services. Understand your rights and responsibilities as a user while utilizing our URL shortening and QR code generation features.",
+    "Review the Terms and Conditions for using BoostSeobyAI services. Understand your rights and responsibilities as a user while utilizing our SEO tools like keyword generation, schema generation, page speed checking, metadata generation, and meta tag generation.",
   openGraph: {
     url: `${process.env.NEXT_PUBLIC_SITE_URL}/terms-conditions`,
     type: "website",
-    title: "Terms and Conditions - InShorten",
+    title: "Terms and Conditions - BoostSeobyAI",
     description:
-      "Review the Terms and Conditions for using InShorten services. Understand your rights and responsibilities as a user while utilizing our URL shortening and QR code generation features.",
+      "Review the Terms and Conditions for using BoostSeobyAI services. Understand your rights and responsibilities as a user while utilizing our SEO tools like keyword generation, schema generation, page speed checking, metadata generation, and meta tag generation.",
   },
   alternates: {
     canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/terms-conditions`,
@@ -61,7 +61,7 @@ export default async function TermsAndCondition() {
           <p>
             <strong>Company</strong> (referred to as either &quot;the
             Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in
-            this Agreement) refers to BoostSeo.
+            this Agreement) refers to BoostSeobyAI.
           </p>
         </li>
         <li>
@@ -101,14 +101,14 @@ export default async function TermsAndCondition() {
         </li>
         <li>
           <p>
-            <strong>Website</strong> refers to BoostSeo, accessible from{" "}
+            <strong>Website</strong> refers to BoostSeobyAI, accessible from{" "}
             <a
-              href="https://BoostSeo.com"
+              href="https://BoostSeobyAI.com"
               rel="external nofollow noopener"
               target="_blank"
               className="text-blue-600 underline"
             >
-              https://BoostSeo.com
+              https://BoostSeobyAI.com
             </a>
           </p>
         </li>
@@ -323,7 +323,7 @@ export default async function TermsAndCondition() {
         contact us:
       </p>
       <ul>
-        <li className="text-blue-600">By email: contact@boostseo.com</li>
+        <li className="text-blue-600">By email: contact@BoostSeobyAI.com</li>
       </ul>
     </main>
   );

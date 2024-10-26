@@ -9,6 +9,7 @@ import { FaRegCopyright, FaXTwitter, FaYoutube } from "react-icons/fa6";
 export default function Footer() {
   const router = useRouter();
   const navData = [
+    { title: "blog", href: "/blog" },
     { title: "Disclaimer", href: "/disclaimer" },
     {
       title: "Privacy Policy",
@@ -43,7 +44,7 @@ export default function Footer() {
   ];
   const features = [
     { label: "Speed Checker", url: "/speed-checker" },
-    { label: "Schema Generator", url: "/" },
+    { label: "Schema Generator", url: "/schema-generate" },
     { label: "Keyword Generator", url: "/keyword-generate" },
     { label: "MetaData Generator", url: "/meta-data-generate" },
     { label: "MetaTag Generator", url: "/meta-tag-generate" },
@@ -61,8 +62,8 @@ export default function Footer() {
               About Us
             </div>
             <div className="text-[14px] sm:text-[16px]">
-              At BoostSEO, we offer a suite of innovative services designed to
-              cater to all your SEO tools needs.
+              At BoostSeobyAI, we offer a suite of innovative services designed
+              to cater to all your SEO tools needs.
             </div>
           </div>
           <div className="flex flex-col gap-1 md:gap-2 items-start">
@@ -109,7 +110,7 @@ export default function Footer() {
               Contact
             </div>
             <div className="text-[14px] md:text-[16px]">
-              e-mail: contact@boostseo.com
+              E-Mail : contact@BoostSeobyAI.com
             </div>
           </div>
         </div>
@@ -132,12 +133,12 @@ export default function Footer() {
             ))}
           </div>
 
-          <div className="text-[20px] md:text-[22px] mt-10">
+          <div className="text-[20px] md:text-[22px] mt-10 ">
             <Logo />
           </div>
-          <div className="flex w-full justify-center text-[12px] md:text-[14px] text-nowrap">
-            <FaRegCopyright className="mr-2 text-[16px]" /> 2024 by BoostSEO.
-            All Right Reserved.
+          <div className="flex w-full justify-center items-center text-[12px] md:text-[14px] text-nowrap">
+            <FaRegCopyright className="mr-2 text-[16px]" /> 2024 by
+            BoostSeobyAI. All Right Reserved.
           </div>
         </div>
       </div>

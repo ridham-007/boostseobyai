@@ -103,7 +103,7 @@ const VideoSchema: React.FC = () => {
 
   const generateSchema = () => {
     const schema = {
-      "@context": "https://BoostSeo.org",
+      "@context": "https://BoostSeobyAI.org",
       "@type": "VideoObject",
       name: formData.name,
       description: formData.description,

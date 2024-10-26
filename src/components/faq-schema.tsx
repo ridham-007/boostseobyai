@@ -45,7 +45,7 @@ const FaqSchema: React.FC = () => {
 
   const generateSchema = () => {
     const schema = {
-      "@context": "https://BoostSeo.org/",
+      "@context": "https://BoostSeobyAI.org/",
       "@type": "FAQPage",
       mainEntity: formDataList.map((formData) => ({
         "@type": "Question",

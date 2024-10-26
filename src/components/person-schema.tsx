@@ -75,7 +75,7 @@ const PersonSchema: React.FC = () => {
 
   const generateSchema = () => {
     const schema = {
-      "@context": "https://BoostSeo.org/",
+      "@context": "https://BoostSeobyAI.org/",
       "@type": "Person",
       name: formData.name,
       url: formData.url,

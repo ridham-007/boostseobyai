@@ -14,7 +14,6 @@ interface InputFieldProps {
   value?: string;
   label?: string | any;
   placeholderLabel?: string;
-
   inputCss?: any;
   min?: string;
   default?: string;

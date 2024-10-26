@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Disclaimer - InShorten",
+  title: "Disclaimer - BoostSeobyAI",
   description:
-    "InShorten provides URL shortening and QR code generation services. Please read our disclaimer to understand the limitations and responsibilities associated with using our services.",
+    "BoostSeobyAI offers SEO tools like keyword generation, schema generation, page speed checking, metadata generation, and meta tag generation. Please read our disclaimer to understand the limitations and responsibilities associated with using our services.",
   openGraph: {
     url: `${process.env.NEXT_PUBLIC_SITE_URL}/disclaimer`,
     type: "website",
-    title: "Disclaimer - InShorten",
+    title: "Disclaimer - BoostSeobyAI",
     description:
-      "InShorten provides URL shortening and QR code generation services. Please read our disclaimer to understand the limitations and responsibilities associated with using our services.",
+      "BoostSeobyAI offers SEO tools like keyword generation, schema generation, page speed checking, metadata generation, and meta tag generation. Please read our disclaimer to understand the limitations and responsibilities associated with using our services.",
   },
   alternates: {
     canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/disclaimer`,
@@ -43,7 +43,7 @@ export default async function Disclaimer() {
         <li>
           <strong>Company</strong> (referred to as either &quot;the
           Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in
-          this Disclaimer) refers to Boostseo.
+          this Disclaimer) refers to BoostSeobyAI.
         </li>
         <li>
           <strong>Service</strong> refers to the Website.
@@ -54,14 +54,14 @@ export default async function Disclaimer() {
           is accessing or using the Service, as applicable.
         </li>
         <li>
-          <strong>Website</strong> refers to Boostseo, accessible from{" "}
+          <strong>Website</strong> refers to BoostSeobyAI, accessible from{" "}
           <a
-            href="https://Boostseo.com"
+            href="https://BoostSeobyAI.com"
             rel="external nofollow noopener"
             target="_blank"
             className="text-blue-600 underline"
           >
-            https://Boostseo.com
+            https://BoostSeobyAI.com
           </a>
         </li>
       </ul>
@@ -191,7 +191,7 @@ export default async function Disclaimer() {
         If you have any questions about this Disclaimer, You can contact Us:
       </p>
       <ul>
-        <li className="text-blue-600">By email: contact@boostseo.com</li>
+        <li className="text-blue-600">By email: contact@BoostSeobyAI.com</li>
       </ul>
     </main>
   );

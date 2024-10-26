@@ -121,7 +121,7 @@ const JobPostingSchema: React.FC = () => {
 
   const generateSchema = () => {
     const schema = {
-      "@context": "https://BoostSeo.org/",
+      "@context": "https://BoostSeobyAI.org/",
       "@type": "JobPosting",
       title: formData.jobTitle,
       description: formData.jobDescription,

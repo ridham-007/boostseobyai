@@ -126,7 +126,7 @@ const LocalBusinessSchema: React.FC = () => {
 
   const generateSchema = () => {
     const schema = {
-      "@context": "https://BoostSeo.org",
+      "@context": "https://BoostSeobyAI.org",
       "@type": formData.localBusinessType,
       name: formData.name,
       image: formData.imageUrl,

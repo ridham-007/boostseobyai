@@ -10,10 +10,11 @@ export interface NavbarProps {}
 export default function Navbar(props: NavbarProps) {
   const navData = [
     { title: "Speed Checker", href: "/speed-checker" },
-    { title: "Schema Generator", href: "/" },
-    { title: "Keyword Generator", href: "/keyword-generate" },
-    { title: "MetaData Generator", href: "meta-data-generate" },
-    { title: "MetaTag Generator", href: "/meta-tag-generate" },
+    { title: "Schema Generate", href: "/schema-generate" },
+    { title: "Keyword Generate", href: "/keyword-generate" },
+    { title: "MetaData Generate", href: "meta-data-generate" },
+    { title: "MetaTag Generate", href: "/meta-tag-generate" },
+    { title: "blog", href: "/blog" },
   ];
 
   const [open, setOpen] = useState(false);
@@ -38,17 +39,17 @@ export default function Navbar(props: NavbarProps) {
     };
   }, []);
   return (
-    <nav className="flex flex-col w-full h-[80px] justify-center relative z-[1000] bg-white shadow-lg md:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-md">
+    <nav className="flex flex-col w-full  h-[80px] justify-center relative z-[1000] bg-white shadow-lg md:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-md">
       <div className="flex w-full justify-between items-center px-5">
         <Logo />
-        <div className="flex items-center blog-list font-medium">
+        <div className="flex items-center blog-list font-medium gap-0 xl:gap-2 text-nowrap lg:text-[14px] xl:text-[16px]">
           {/* Desktop Navigation */}
           {navData.map((tab, index) => (
             <Link
               key={`desktop-nav-${index}`}
               href={tab.href}
               target="_blank"
-              className="hidden md:flex p-2 mr-5 rounded-md capitalize hover:text-[#0B80E0] cursor-pointer"
+              className="hidden lg:flex p-2 rounded-md capitalize hover:text-[#0B80E0] cursor-pointer "
               onClick={(e) => {
                 if (!e.ctrlKey && !e.metaKey) {
                   e.preventDefault();
@@ -63,7 +64,7 @@ export default function Navbar(props: NavbarProps) {
           {/* Hamburger for Mobile */}
           <RxHamburgerMenu
             size={24}
-            className="md:hidden ml-5 cursor-pointer"
+            className="lg:hidden ml-5 cursor-pointer"
             onClick={handleOpen}
           />
         </div>

@@ -159,7 +159,7 @@ const HowToSchema: React.FC = () => {
     }));
 
     const schema = {
-      "@context": "https://Boostseo.org/",
+      "@context": "https://BoostSeobyAI.org/",
       "@type": "HowTo",
       name: formData.name,
       description: formData.description,

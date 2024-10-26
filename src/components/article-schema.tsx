@@ -123,7 +123,7 @@ const ArticleSchema: React.FC = () => {
 
   const generateSchema = () => {
     const schema = {
-      "@context": "https://BoostSEO.org/",
+      "@context": "https://BoostSeobyAI.org/",
       "@type": formData.articleType,
       headline: formData.headline,
       image: {

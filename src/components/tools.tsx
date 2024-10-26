@@ -2,9 +2,10 @@
 import Link from "next/link";
 import React from "react";
 import { VscSymbolKeyword } from "react-icons/vsc";
-import { IoMdSpeedometer } from "react-icons/io";
+import { GiSpeedometer } from "react-icons/gi";
 import { HiDatabase } from "react-icons/hi";
-import { PiRobotLight } from "react-icons/pi";
+import { LuFileJson } from "react-icons/lu";
+import { LuCode2 } from "react-icons/lu";
 
 const Tools = () => {
   const toolsData = [
@@ -16,7 +17,7 @@ const Tools = () => {
       link: "/keyword-generate",
     },
     {
-      icon: <IoMdSpeedometer className="text-[28px]" />,
+      icon: <GiSpeedometer className="text-[28px]" />,
       title: "Speed Checker",
       description:
         "Analyze your website’s performance with our speed checker, ensuring optimal load times for a better user experience.",
@@ -30,27 +31,34 @@ const Tools = () => {
       link: "/meta-data-generate",
     },
     {
-      icon: <PiRobotLight className="text-[28px]" />,
+      icon: <LuCode2 className="text-[28px]" />,
       title: "MetaTag Generate",
       description:
         "Effortlessly generate relevant meta tags to enhance your content’s searchability.",
       link: "/meta-tag-generate",
     },
+    {
+      icon: <LuFileJson className="text-[28px]" />,
+      title: "Json Schema Generate",
+      description:
+        "Simplify the process of implementing structured data to enhance your website’s search engine results.",
+      link: "/schema-generate",
+    },
   ];
 
   return (
     <div className="flex flex-col w-full gap-10 sm:gap-12 ">
-      <div className="text-[32px] sm:text-[42px] font-bold text-center ">
+      <div className="text-[32px] sm:text-[42px] font-semibold text-center ">
         Existing free tools
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:flex-row md:gap-6  lg:gap-8 md:items-start">
+      <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-3 gap-8 md:flex-row md:gap-6  lg:gap-8 md:items-start">
         {toolsData.map((tool, index) => (
           <div
             key={index}
             className="flex flex-col gap-7 border rounded-md p-6 shadow-md transition-transform transform hover:scale-105"
           >
-            <div className="flex rotate-12 justify-center items-center h-[50px] w-[50px] text-[#0B80E0] bg-white shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-md p-2">
+            <div className="flex rotate-12 justify-center items-center h-[50px] w-[50px] text-[#000] bg-white shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-md p-2">
               {tool.icon}
             </div>
             <div className="flex flex-col gap-1 h-[100px] w-full max-w-[500px]">
@@ -59,7 +67,7 @@ const Tools = () => {
             </div>
             <Link
               href={tool.link}
-              className="flex text-nowrap w-fit px-3 py-1 text-[14px] font-semibold rounded-full bg-[#e4f3ff] text-[#0B80E0] hover:bg-[#cfe7fa]"
+              className="flex text-nowrap w-fit px-3 py-1 text-[14px] font-semibold rounded-full bg-[#e5e5e5] text-[#000] hover:bg-[#e0dfdf]"
             >
               Try this feature for free
             </Link>

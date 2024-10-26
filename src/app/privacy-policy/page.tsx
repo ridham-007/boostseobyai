@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy - InShorten",
+  title: "Privacy Policy - BoostSeobyAI",
   description:
-    "Explore InShorten Privacy Policy to understand how we protect and manage your data while providing URL shortening and QR code generation services.",
+    "Explore the BoostSeobyAI Privacy Policy to understand how we protect and manage your data while providing SEO tools like keyword generation, schema generation, page speed checking, metadata generation, and meta tag generation.",
   openGraph: {
     url: `${process.env.NEXT_PUBLIC_SITE_URL}/privacy-policy`,
     type: "website",
-    title: "Privacy Policy - InShorten",
+    title: "Privacy Policy - BoostSeobyAI",
     description:
-      "Explore InShorten Privacy Policy to understand how we protect and manage your data while providing URL shortening and QR code generation services.",
+      "Explore the BoostSeobyAI Privacy Policy to understand how we protect and manage your data while providing SEO tools like keyword generation, schema generation, page speed checking, metadata generation, and meta tag generation.",
   },
   alternates: {
     canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/privacy-policy`,
@@ -77,7 +77,7 @@ export default async function PrivacyPolicy() {
           <p>
             <strong>Company</strong> (referred to as either &quot;the
             Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in
-            this Agreement) refers to BoostSeo.
+            this Agreement) refers to BoostSeobyAI.
           </p>
         </li>
         <li>
@@ -129,14 +129,14 @@ export default async function PrivacyPolicy() {
         </li>
         <li>
           <p>
-            <strong>Website</strong> refers to BoostSeo, accessible from{" "}
+            <strong>Website</strong> refers to BoostSeobyAI, accessible from{" "}
             <a
-              href="https://BoostSeo.com"
+              href="https://BoostSeobyAI.com"
               rel="external nofollow noopener"
               target="_blank"
               className="text-blue-600 underline"
             >
-              https://BoostSeo.com
+              https://BoostSeobyAI.com
             </a>
           </p>
         </li>
@@ -543,7 +543,7 @@ export default async function PrivacyPolicy() {
         If you have any questions about this Privacy Policy, You can contact us:
       </p>
       <ul>
-        <li className="text-blue-600">By email: contact@boostseo.com</li>
+        <li className="text-blue-600">By email: contact@BoostSeobyAI.com</li>
       </ul>
     </main>
   );

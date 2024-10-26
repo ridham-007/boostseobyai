@@ -30,9 +30,10 @@ const Logo = (props: LogoProps) => {
         height={35}
         className={props?.imageClass ?? ""}
       />
-
       {"Boost"}
-      <span className="contents text-[#0B80E0]">SEO</span>
+      <span className="contents text-[#0B80E0]">Seo</span>
+      by
+      <span className="contents text-[#0B80E0]">AI</span>
     </div>
   );
 };

@@ -189,7 +189,7 @@ const OrganizationSchema: React.FC = () => {
 
   const generateSchema = () => {
     const schema = {
-      "@context": "https://BoostSeo.org",
+      "@context": "https://BoostSeobyAI.org",
       "@type": "Organization",
       organization: formData.organizationType,
       name: formData.name,

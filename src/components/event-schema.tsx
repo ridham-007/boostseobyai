@@ -194,7 +194,7 @@ const EventSchema = () => {
   };
   const generateSchema = () => {
     const schema = {
-      "@context": "https://BoostSeo.org",
+      "@context": "https://BoostSeobyAI.org",
       "@type": "Event",
       name: formData.eventName,
       description: formData.description,
