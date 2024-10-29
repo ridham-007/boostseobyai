@@ -6,8 +6,8 @@ const HomeInfo = () => {
   return (
     <div className="flex flex-col lg:flex-row w-full gap-10 sm:gap-12 p-2">
       <div className="flex flex-col gap-4 w-full max-w-1/2 justify-center items-center ">
-        <div className="text-[35px] sm:text-[42px] lg:text-[50px] text-center lg:text-start font-medium">
-          Free SEO tools will help you with various SEO tasks
+        <div className="text-[30px] sm:text-[42px] lg:text-[50px] text-center lg:text-start font-medium">
+          Free SEO software will allow you to do many SEO operations.
         </div>
         <div className="text-[16px] lg:text-[18px] text-gray-600 text-center lg:text-start">
           Such as Keyword research, Page speed checker, MetaData Generator,

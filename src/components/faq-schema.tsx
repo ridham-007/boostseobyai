@@ -68,9 +68,14 @@ const FaqSchema: React.FC = () => {
   const handleAddQuestion = () => {
     setFormDataList([...formDataList, { questions: "", answer: "" }]);
   };
+  const handleRemoveQuestion = () => {
+    if (formDataList.length > 1) {
+      setFormDataList(formDataList.slice(0, -1));
+    }
+  };
 
   return (
-    <div className="flex flex-col lg:flex-row w-full gap-10 bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-md p-6 lg:p-10">
+    <div className="flex flex-col lg:flex-row w-full gap-10 bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-md p-4 lg:p-10">
       {/* Form Section */}
       <div className="flex flex-col w-full h-full lg:w-1/2 gap-3">
         {formDataList.map((formData, index) => (
@@ -109,12 +114,18 @@ const FaqSchema: React.FC = () => {
             </div>
           </div>
         ))}
-
-        <CustomButton
-          className="mt-2 py-3 w-[150px] text-nowrap"
-          label="Add Question"
-          onClick={handleAddQuestion}
-        />
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-5">
+          <CustomButton
+            className="mt-2 py-3 w-[150px] text-nowrap"
+            label="Add Question"
+            onClick={handleAddQuestion}
+          />
+          <CustomButton
+            className="mt-2 py-3 w-[170px] text-nowrap"
+            label="Remove Question"
+            onClick={handleRemoveQuestion}
+          />
+        </div>
         <CustomButton
           className="mt-3 py-3"
           label="Generate Schema"
