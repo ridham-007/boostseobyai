@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { RiFacebookFill, RiLinkedinFill } from "react-icons/ri";
 import { BsInstagram } from "react-icons/bs";
 import { FaRegCopyright, FaXTwitter, FaYoutube } from "react-icons/fa6";
+import Image from 'next/image'
 
 export default function Footer() {
   const router = useRouter();
@@ -133,9 +134,12 @@ export default function Footer() {
             ))}
           </div>
 
-          <div className="text-[20px] md:text-[22px] mt-10 ">
-            <Logo />
-          </div>
+          <Image
+            src="/images/GroupLogo.png"
+            width={150}
+            height={150}
+            alt="Picture of the author"
+          />
           <div className="flex w-full justify-center items-center text-[12px] md:text-[14px] text-nowrap">
             <FaRegCopyright className="mr-2 text-[16px]" /> 2024 by
             BoostSeobyAI. All Right Reserved.

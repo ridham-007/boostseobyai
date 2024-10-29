@@ -4,7 +4,7 @@ import Logo from "@/components/logo";
 import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
-
+import Image from "next/image";
 export interface NavbarProps {}
 
 export default function Navbar(props: NavbarProps) {
@@ -41,7 +41,13 @@ export default function Navbar(props: NavbarProps) {
   return (
     <nav className="flex flex-col w-full  h-[80px] justify-center relative z-[1000] bg-white shadow-lg md:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-md">
       <div className="flex w-full justify-between items-center px-5">
-        <Logo />
+        {/* <Logo /> */}
+        <Image
+          src="/images/GroupLogo.png"
+          width={140}
+          height={140}
+          alt="Picture of the author"
+        />
         <div className="flex items-center blog-list font-medium gap-0 xl:gap-2 text-nowrap lg:text-[14px] xl:text-[16px]">
           {/* Desktop Navigation */}
           {navData.map((tab, index) => (

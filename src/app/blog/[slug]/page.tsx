@@ -97,7 +97,7 @@ export async function generateMetadata(
           "Ai Text Humanize is an online, free AI text converter that turns the AI generated text into a human readable text and best plagiarism remover.",
         images: [
           {
-            url: `${process.env.NEXT_PUBLIC_SITE_URL}/images/logo.png`,
+            url: `${process.env.NEXT_PUBLIC_SITE_URL}/images/GroupLogo.png`,
           },
         ],
       },

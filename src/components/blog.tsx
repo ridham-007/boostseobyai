@@ -10,7 +10,7 @@ const blogPosts = [
     description:
       "Are you frustrated with lengthy, unattractive links taking up space in your social media posts, emails, and other online communications? If that sounds familiar, you might want to try a short URL service like InShorten. In this....",
     image: "/images/url-shortener.jpg",
-    logo: "/images/logo.png",
+    logo: "/images/GroupLogo.png",
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const blogPosts = [
     description:
       "Short Link is a website that enables users to create and share shortened links. This service is free and...",
     image: "/images/urlShorten.jfif",
-    logo: "/images/logo.png",
+    logo: "/images/GroupLogo.png",
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ const blogPosts = [
     description:
       "Link shortening, also referred to as URL shortening, is a method used to reduce the length of a URL or website link. This can be...",
     image: "/images/short.jfif",
-    logo: "/images/logo.png",
+    logo: "/images/GroupLogo.png",
   },
 ];
 
