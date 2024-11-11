@@ -23,19 +23,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   );
   const data1 = await articleResponse.json();
-  const lang = [
-    "en",
-    "es",
-    "da",
-    "de",
-    "fr",
-    "id",
-    "it",
-    "ja",
-    "pt",
-    "ru",
-    "tr",
-  ];
 
   const article =
     data1?.articles?.reduce((cur: any[], item: any, index: number) => {
@@ -49,18 +36,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }, []) || [];
 
   const otherFixture =
-    ["about-us", "terms-conditions", "privacy-policy", "disclaimer", 'blog'].reduce(
-      (cur: any[], item: any, index: number) => {
-        cur.push({
-          url: `${siteUrl}/${item}`,
-          lastModified: new Date(),
-          changeFrequency: changeFrequency,
-          priority: 0.8,
-        });
-        return cur;
-      },
-      []
-    ) || [];
+    [
+      "Speed Checker",
+      "Schema Generate",
+      "Keyword Generate",
+      "MetaData Generate",
+      "MetaTag Generate",
+      "privacy-policy",
+      "disclaimer",
+      "blog",
+    ].reduce((cur: any[], item: any, index: number) => {
+      cur.push({
+        url: `${siteUrl}/${item}`,
+        lastModified: new Date(),
+        changeFrequency: changeFrequency,
+        priority: 0.8,
+      });
+      return cur;
+    }, []) || [];
 
   return [
     {
@@ -69,73 +62,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "daily",
       priority: 0.8,
     },
-    {
-      url: `${siteUrl}/da`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/de`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/en`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/es`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/fr`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/id`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/it`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/ja`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/pt`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/ru`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/tr`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
     ...article,
-    ...otherFixture
+    ...otherFixture,
   ];
 }
