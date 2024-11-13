@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import InputField from "./ui/inputField";
+import InputField from "./ui/inputFields";
 import CustomButton from "./ui/custom-button";
 import { LuCopy } from "react-icons/lu";
 import { FaAngleDown } from "react-icons/fa6";

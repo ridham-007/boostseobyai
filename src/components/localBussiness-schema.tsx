@@ -8,7 +8,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import { FaAngleDown } from "react-icons/fa6";
 import CustomTime from "./ui/customTime";
-import InputField from "./ui/inputField";
+import InputField from "./ui/inputFields";
 
 interface FormData {
   localBusinessType: string;

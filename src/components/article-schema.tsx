@@ -8,7 +8,7 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import { FaAngleDown } from "react-icons/fa6";
-import InputField from "./ui/inputField";
+import InputField from "./ui/inputFields";
 
 interface FormData {
   articleType: string;

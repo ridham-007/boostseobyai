@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import CustomSelection from "./ui/customSelection";
-import InputField from "./ui/inputField";
+import InputField from "./ui/inputFields";
 import CustomButton from "./ui/custom-button";
 import { LuCopy } from "react-icons/lu";
 import Accordion from "@mui/material/Accordion";
